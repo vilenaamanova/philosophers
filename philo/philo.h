@@ -6,7 +6,7 @@
 /*   By: ncathy <ncathy@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/05/23 13:32:28 by ncathy            #+#    #+#             */
-/*   Updated: 2022/05/26 12:02:51 by ncathy           ###   ########.fr       */
+/*   Updated: 2022/06/27 11:16:20 by ncathy           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -56,6 +56,7 @@ typedef struct s_each_philo {
 	int						right;
 	long					start_time;
 	long					ate_last_time;
+	long					current_time;
 	struct s_philo_struct	*philo;
 }	t_each_philo;
 
@@ -66,7 +67,7 @@ int				ft_atoi(const char *str);
 t_philo_struct	*init_struct(t_philo_struct *philo_struct, char **argv);
 void			init_forks(t_philo_struct *philo_struct);
 void			*init_philo(t_philo_struct *philo_struct);
-void			init_philo_values(t_philo_struct *philo_struct);
+void			init_philo_values(t_philo_struct *philo_struct, int i);
 void			init_mutexes(t_philo_struct *philo_struct);
 void			init(t_philo_struct *philo_struct);
 
@@ -80,6 +81,7 @@ int				philo_is_dead(t_philo_struct *philo_struct);
 /* time */
 long			get_time(void);
 int				ft_usleep(long mseconds);
+int				is_philo_going_to_die(t_philo_struct *ph, int i);
 
 /* utils */
 int				philo_print(t_philo_struct *ph,

@@ -1,16 +1,16 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   time.c                                             :+:      :+:    :+:   */
+/*   time_bonus.c                                       :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: ncathy <ncathy@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2022/05/23 19:38:32 by ncathy            #+#    #+#             */
-/*   Updated: 2022/06/27 11:15:52 by ncathy           ###   ########.fr       */
+/*   Created: 2022/05/24 20:20:04 by ncathy            #+#    #+#             */
+/*   Updated: 2022/06/27 13:28:42 by ncathy           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "philo.h"
+#include "philo_bonus.h"
 
 long	get_time(void)
 {
@@ -24,28 +24,11 @@ long	get_time(void)
 
 int	ft_usleep(long mseconds)
 {
-	long	before;
-	long	after;
+	long	time;
 
-	before = get_time();
-	after = before;
-	while (after - before < mseconds)
-	{
-		if (usleep(mseconds) == -1)
-			return (-1);
-		after = get_time();
-	}
-	return (0);
-}
-
-int	is_philo_going_to_die(t_philo_struct *ph, int i)
-{
-	pthread_mutex_lock(&ph->ate_last_time_lock);
-	if (get_time() - ph->each_philo[i].ate_last_time >= ph->time_to_die)
-	{
-		pthread_mutex_unlock(&ph->ate_last_time_lock);
-		return (1);
-	}
-	pthread_mutex_unlock(&ph->ate_last_time_lock);
+	time = 0;
+	time = get_time();
+	while (get_time() - time < mseconds)
+		usleep(mseconds / 10);
 	return (0);
 }

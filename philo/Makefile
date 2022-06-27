@@ -11,9 +11,9 @@ HEADER	=	philo.h
 
 OBJ		=	$(patsubst %.c, %.o, $(SRCS))
 
-# CDEBUG	=	-fsanitize=address
+# CDEBUG	=	-fsanitize=thread
 
-CC		=	cc -pthread
+CC		=	cc -g -pthread
 
 CFLAGS	=	-Wall -Wextra -Werror
 

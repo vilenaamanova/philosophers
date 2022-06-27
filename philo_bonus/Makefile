@@ -1,11 +1,11 @@
 NAME	=	philo_bonus
 
 SRCS	=	ft_atoi.c \
-			init.c \
-			main.c \
-			philo.c \
-			time.c \
-			utils.c \
+			init_bonus.c \
+			main_bonus.c \
+			philo_bonus.c \
+			time_bonus.c \
+			utils_bonus.c \
 
 HEADER	=	philo_bonus.h
 

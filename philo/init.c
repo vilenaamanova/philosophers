@@ -6,7 +6,7 @@
 /*   By: ncathy <ncathy@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/05/23 19:22:29 by ncathy            #+#    #+#             */
-/*   Updated: 2022/05/26 15:46:21 by ncathy           ###   ########.fr       */
+/*   Updated: 2022/06/26 09:43:38 by ncathy           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -47,7 +47,7 @@ void	*init_philo(t_philo_struct *philo_struct)
 	i = 0;
 	while (i < philo_struct->philo_num)
 	{
-		init_philo_values(philo_struct);
+		init_philo_values(philo_struct, i);
 		pthread_create(&philo_struct->philo[i],
 			NULL, &philo, &philo_struct->each_philo[i]);
 		i++;
@@ -63,21 +63,14 @@ void	*init_philo(t_philo_struct *philo_struct)
 	return (NULL);
 }
 
-void	init_philo_values(t_philo_struct *philo_struct)
+void	init_philo_values(t_philo_struct *philo_struct, int i)
 {
-	int	i;
-
-	i = 0;
-	while (i < philo_struct->philo_num)
-	{
-		philo_struct->each_philo[i].num_of_eat = philo_struct->num_of_eat;
-		philo_struct->each_philo[i].philo_id = i + 1;
-		philo_struct->each_philo[i].left = i;
-		philo_struct->each_philo[i].right = (i + 1)
-			% philo_struct->philo_num;
-		philo_struct->each_philo[i].start_time = philo_struct->start_time;
-		philo_struct->each_philo[i].ate_last_time = philo_struct->ate_last_time;
-		philo_struct->each_philo[i].philo = philo_struct;
-		i++;
-	}
+	philo_struct->each_philo[i].num_of_eat = philo_struct->num_of_eat;
+	philo_struct->each_philo[i].philo_id = i + 1;
+	philo_struct->each_philo[i].left = i;
+	philo_struct->each_philo[i].right = (i + 1)
+		% philo_struct->philo_num;
+	philo_struct->each_philo[i].start_time = philo_struct->start_time;
+	philo_struct->each_philo[i].ate_last_time = philo_struct->ate_last_time;
+	philo_struct->each_philo[i].philo = philo_struct;
 }
